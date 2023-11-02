@@ -1,48 +1,25 @@
-let current_value = 0;
-let input_number = 0;
-let calculation = "";
-let last_action = "";
-const input_box = document.getElementById("input-box");
+const calculator = document.querySelector("#calculator");
+const calculatorDisplay = calculator.querySelector("input");
+const calculatorKeys = calculator.querySelectorAll("button[data-value]");
+let displayValue = "0";
 
-
-function calculate(event){
-    event.preventDefault();
-    let input = document.forms["calculator"]["input-box"].value;
-    switch(calculation){
-        case "+":
-            current_value += input_number;
-            const input_box = document.getElementById("input-box");
-            input_box.value = current_value;
-            break;
-        default:
-            break;
-    }
-    
+function updateDisplay(newChar) {
+  if(displayValue === "0") {
+    displayValue = newChar;
+    calculatorDisplay.value = displayValue;
+    return;
+  }
+  displayValue += newChar;
+    calculatorDisplay.value = displayValue;
 }
-document.getElementById("additionButton").addEventListener("click", function() {
-    // Append "+" to the calculation string
-    calculation = "+";
-    if(current_value == 0){
-        current_value = input_number;
-    }
 
-  
-  });
+calculatorDisplay.addEventListener('input', () => {
+    displayValue = calculatorDisplay.value;
+})
 
-  document.getElementById("1").addEventListener("click", function() {
-    // Append "+" to the calculation string
-        input_number = 1; 
-        input_box.value += 1;
-
-  });
-
-
-
-
-
-
-
-
-const form = document.querySelector("form");
-form.addEventListener("submit", calculate);
-
+for (const button of calculatorKeys) {
+    const buttonValue = button.getAttribute("data-value");
+    button.addEventListener("click", () => {
+        updateDisplay(buttonValue);
+    })
+}
