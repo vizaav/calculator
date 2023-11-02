@@ -9,45 +9,79 @@ let secondOperand = 0;
 let operator = null;
 
 function updateDisplay(newChar) {
-  if(displayValue === "0") {
+  if (displayValue === "0") {
     displayValue = newChar;
     calculatorDisplay.value = displayValue;
     return;
   }
   displayValue += newChar;
-    calculatorDisplay.value = displayValue;
+  calculatorDisplay.value = displayValue;
 }
 
-calculatorDisplay.addEventListener('input', () => {
-    displayValue = calculatorDisplay.value;
-})
+calculatorDisplay.addEventListener("input", () => {
+  displayValue = calculatorDisplay.value;
+});
 
 for (const button of calculatorKeys) {
-    const buttonValue = button.getAttribute("data-value");
-    button.addEventListener("click", () => {
-        updateDisplay(buttonValue);
-    })
+  const buttonValue = button.getAttribute("data-value");
+  button.addEventListener("click", () => {
+    updateDisplay(buttonValue);
+  });
 }
 
 for (const button of calculatorOperators) {
-    const buttonValue = button.getAttribute("data-op");
-    button.addEventListener("click", () => {
-        console.log(buttonValue);
-        if(buttonValue == "eq"){
-            secondOperand = parseFloat(calculatorDisplay.value);
-            if(operator === "+") {
-                displayValue = firstOperand + secondOperand;
-                calculatorDisplay.value = displayValue;
-                return;
-            }
-        }
-        if(buttonValue === "add") {
-            operator = "+";
-            firstOperand = parseFloat(calculatorDisplay.value);
-            displayValue = "0";
-            calculatorDisplay.value = displayValue;
-            return;
-        }
-    })
+  const buttonValue = button.getAttribute("data-op");
+  button.addEventListener("click", () => {
+    if (buttonValue == "eq") {
+      secondOperand = parseFloat(calculatorDisplay.value);
+      if (operator === "+") {
+        displayValue = firstOperand + secondOperand;
+        calculatorDisplay.value = displayValue;
+        return;
+      } else if (operator === "-") {
+        displayValue = firstOperand - secondOperand;
+        calculatorDisplay.value = displayValue;
+        return;
+      } else if (operator === "*") {
+        displayValue = firstOperand * secondOperand;
+        calculatorDisplay.value = displayValue;
+        return;
+      } else if (operator === "/") {
+        displayValue = firstOperand / secondOperand;
+        calculatorDisplay.value = displayValue;
+        return;
+      } else {
+        console.log("error");
+      }
+    }
+    if (buttonValue === "add") {
+      operator = "+";
+      firstOperand = parseFloat(calculatorDisplay.value);
+      displayValue = "0";
+      calculatorDisplay.value = displayValue;
+      return;
+    } else if (buttonValue === "sub") {
+      operator = "-";
+      firstOperand = parseFloat(calculatorDisplay.value);
+      displayValue = "0";
+      calculatorDisplay.value = displayValue;
+      return;
+    } else if (buttonValue === "mul") {
+      operator = "*";
+      firstOperand = parseFloat(calculatorDisplay.value);
+      displayValue = "0";
+      calculatorDisplay.value = displayValue;
+      return;
+    } else if (buttonValue === "div") {
+      operator = "/";
+      firstOperand = parseFloat(calculatorDisplay.value);
+      displayValue = "0";
+      calculatorDisplay.value = displayValue;
+      return;
+    } else if (buttonValue === "clear") {
+      displayValue = "0";
+      calculatorDisplay.value = displayValue;
+      return;
+    }
+  });
 }
-
