@@ -33,7 +33,7 @@ for (const button of calculatorOperators) {
   const buttonValue = button.getAttribute("data-op");
   button.addEventListener("click", () => {
     if (buttonValue == "eq") {
-      secondOperand = parseFloat(calculatorDisplay.value);
+      secondOperand = Number(calculatorDisplay.value);
       if (operator === "+") {
         displayValue = firstOperand + secondOperand;
         calculatorDisplay.value = displayValue;
@@ -56,25 +56,25 @@ for (const button of calculatorOperators) {
     }
     if (buttonValue === "add") {
       operator = "+";
-      firstOperand = parseFloat(calculatorDisplay.value);
+      firstOperand = Number(calculatorDisplay.value);
       displayValue = "0";
       calculatorDisplay.value = displayValue;
       return;
     } else if (buttonValue === "sub") {
       operator = "-";
-      firstOperand = parseFloat(calculatorDisplay.value);
+      firstOperand = Number(calculatorDisplay.value);
       displayValue = "0";
       calculatorDisplay.value = displayValue;
       return;
     } else if (buttonValue === "mul") {
       operator = "*";
-      firstOperand = parseFloat(calculatorDisplay.value);
+      firstOperand = Number(calculatorDisplay.value);
       displayValue = "0";
       calculatorDisplay.value = displayValue;
       return;
     } else if (buttonValue === "div") {
       operator = "/";
-      firstOperand = parseFloat(calculatorDisplay.value);
+      firstOperand = Number(calculatorDisplay.value);
       displayValue = "0";
       calculatorDisplay.value = displayValue;
       return;
