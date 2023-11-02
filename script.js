@@ -32,7 +32,7 @@ document.getElementById("additionButton").addEventListener("click", function() {
   document.getElementById("1").addEventListener("click", function() {
     // Append "+" to the calculation string
         input_number = 1; 
-        input_box.value = 1;
+        input_box.value += 1;
 
   });
 
