@@ -1,3 +1,35 @@
-p {
-  color: red;
+#calculator {
+  display: grid;
+  width: 220px;
+  grid-template-columns: auto auto auto auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+  margin: 5px;
+}
+
+input {
+  grid-column: 1 / span 4;
+  width: 225px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+  margin: 5px;
+  text-align: right;
+  font-weight: bold;
+  color: #000;
 }
